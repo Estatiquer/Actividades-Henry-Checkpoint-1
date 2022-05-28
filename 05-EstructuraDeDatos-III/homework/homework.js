@@ -42,6 +42,35 @@ BinarySearchTree.prototype.insert = function (value) {
   }
 }
 
+/*BinarySearchTree.prototype.insertArray = function (array) {
+
+  for (let i = 0 ; i < array.length ; i++){
+   
+   if (array[i] < this.value) {
+     if (this.left === null) {
+       this.left = new BinarySearchTree(array[i]);
+       this.length++;
+     }
+     else {
+       this.left.insert(array[i]);
+       this.length++;
+     }
+   }
+ 
+   if (array[i] > this.value) {
+     if (this.right === null) {
+       this.right = new BinarySearchTree(array[i]);
+       this.length++;
+     }
+     else {
+       this.right.insert(array[i]);
+       this.length++;
+     }
+   }
+ }
+ }
+ */
+
 BinarySearchTree.prototype.contains = function(value) {
   
   if (this.value === value) return true;
@@ -65,9 +94,22 @@ BinarySearchTree.prototype.contains = function(value) {
   }
 }
 
+/*BinarySearchTree.prototype.minValue = function() {
+  
+  var minv = this.value;
+  var current = this.left;
+  
+  while (current) { 
+  minv = current.value;
+  current = current.left;
+  }
+  return minv;
+}
+*/
+
 BinarySearchTree.prototype.size = function() {
 
-  return this.length
+  return this.length;
 
   /*
 
@@ -105,9 +147,6 @@ BinarySearchTree.prototype.depthFirstForEach = function(cb, order) {
     if(this.right !== null) this.right.depthFirstForEach(cb, order);
     
   }
-
-  
-
 }
 
 var array = [];
@@ -130,7 +169,6 @@ BinarySearchTree.prototype.breadthFirstForEach = function() {
     array.shift().breadthFirstForEach(cb,array)
   }
 }
-
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------

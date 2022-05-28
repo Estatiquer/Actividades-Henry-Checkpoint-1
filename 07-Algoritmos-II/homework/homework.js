@@ -31,7 +31,7 @@ function mergeSort(array) {
   // Devolver el array ordenado resultante
   // Tu código:
 
-  if (array.length <= 1) return array;
+  if (array.length === 1) return array;
 
   const index = Math.floor(array.length / 2);
   let left = array.splice(0, index);

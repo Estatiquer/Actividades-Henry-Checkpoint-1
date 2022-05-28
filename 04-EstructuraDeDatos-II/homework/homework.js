@@ -58,7 +58,7 @@ LinkedList.prototype.remove = function () {
   if (current.next === null){
     this.head = null;
     this._length--;
-    return current;
+    return current.value;
   }
 
   while (current.next) {
@@ -66,30 +66,47 @@ LinkedList.prototype.remove = function () {
     current = current.next;
   }
 
-
   previous.next = null;
   this._length--;
-  return current;
+  return current.value;
 
 }
 
-LinkedList.prototype.search = function (somethingToSearch) {
+LinkedList.prototype.search = function (value) {
+
+  var thisNode = this.head;
+
+  while (thisNode) {
+    if (thisNode.value == value) return thisNode.value
+    else if (typeof value == 'function') {
+      if (value(thisNode.value)) {
+        return thisNode.value
+      }
+    }
+    thisNode = thisNode.next
+  }
+  return null
+}
+
+// ordernar lista en caso de ser numerica
+
+/*LinkedList.prototype.orderList = function () {
 
   var current = this.head;
-  
-  while (current) {
-   
-    if (current.value === somethingToSearch) return current.value;
 
-    else if(typeof somethingToSearch === 'function' ) {
-
-      if (somethingToSearch(current.value)) {
-        return current.value;
+  while (current.next) {
+    let inside = current.next;
+    while (inside) {
+      if (current.value > inside.value) {
+        let aux = inside.value;
+        inside.value = current.value;
+        current.value = aux;
       }
+      inside = inside.next;
     }
     current = current.next;
   }
-}
+}*/
 
 // Hash Table( ver información en: https://es.wikipedia.org/wiki/Tabla_hash)
 // Una Hash table contiene un arreglo de "contenedores" o buckets donde puede guardar información.
